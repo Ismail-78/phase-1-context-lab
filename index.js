@@ -1,4 +1,61 @@
 /* Your Code Here */
+let createEmployeeRecord= (employeeCard) => {
+    let employee 
+        return employee = {
+            firstName:employeeCard[0],
+            familyName:employeeCard[1],
+            title:employeeCard[2],
+            payPerHour:employeeCard[3],
+            timeInEvents:[],
+            timeOutEvents:[]
+        }
+}
+let createEmployeeRecords= (employeesCardsData) => {
+    return employeesCardsData.map(createEmployeeRecord);
+}
+//employee check in time provided date
+function createTimeInEvent (dateStamp) {
+    let [date, hour] =dateStamp.split(' ');
+    this.timeInEvents.push({
+    type:'TimeIn',
+    hour:parseInt(hour,10),
+    date
+    })
+    return this
+}
+//emplyee's checkout time provided date
+function createTimeOutEvent (dateStamp) {
+    let [date, hour] =dateStamp.split(' ');
+      this.timeOutEvents.push({
+        type:'TimeOut',
+            hour:parseInt(hour,10),
+                date
+    })
+    return this
+}
+//Given a date, find the number of hours elapsed between that date's timeInEvent and TimeOutEvent
+function hoursWorkedOnDate (dateOfTheForm) {
+    let clockIn = this.timeInEvents.find((e) => e.date ==dateOfTheForm).hour
+        let clockOut= this.timeOutEvents.find((e) => e.date ==dateOfTheForm).hour
+            return(clockOut-clockIn)/100
+}
+//using hoursWorkedOnDate, multiply the hours by the record payrate to determine amount owed.
+function wagesEarnedOnDate (dateOfTheForm) {
+    const payPerHour = parseInt(this.payPerHour)
+        const hoursWorked= hoursWorkedOnDate.call(this, dateOfTheForm)
+            return payPerHour * hoursWorked
+}
+function findEmployeeByFirstName (AllEmployeeRecords, firstName) {
+    return AllEmployeeRecords.find((e) => {
+        return e.firstName
+    })
+}
+//using wagesEarnedOnDat , accumulate the vaue of all dates worked by the employee in the record
+function calculatePayroll(AllEmployeeRecords) {
+    return AllEmployeeRecords.reduce((previousAmount, employee) => {
+        return previousAmount + allWagesFor.call(employee)
+    }, 0)
+}
 
 /*
  We're giving you this function. Take a look at it, you might see some usage
